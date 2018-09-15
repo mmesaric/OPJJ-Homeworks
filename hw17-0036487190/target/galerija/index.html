@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Gallery</title>
+
+<style>
+body {
+	background-color: lightblue;
+}
+
+.tagButton {
+	margin: 2px 2px 2px 2px;
+	padding: 7px 7px 7px 7px;
+	background-color: navy;
+	color: white;
+	border-radius: 20px;
+	font-style: italic;
+}
+
+.thumbnailImg {
+	margin-right: 2px;
+	border: 2px solid black;	
+}
+
+.fullSizeImage {
+	border: 2px solid black;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"><!--
+		  // vidi: http://www.w3schools.com/ajax/default.asp
+		  
+	 $(document).ready( 
+			  function() {
+				 getTags();
+				 
+				 $('#tagButtons').on("click", ".tagButton", function(){
+					    var tagValue = "" + $(this).val();
+						$("#fullSizeImage").empty();
+						$.ajax(
+							  	{
+							  	  type: "GET",
+								  url: "rest/pictures/" + tagValue,
+								  dataType: "json",
+								  success: function(data) {
+										var fileNames = data; // već je JSON zbog dataType gore...
+						
+										var html = "";
+										if(fileNames.length==0) {
+											html = "Nema rezultata..."
+										} else {
+											for(var i=0; i<fileNames.length; i++) {
+												if (i%5==0) {
+													html+="<br>";
+												}
+												html += "<img class='thumbnailImg' src='servlets/getThumbnail?fileName=" +fileNames[i] + "' alt='Thumbnail' onclick='renderImage(\""+fileNames[i]+"\")' height='150' + width='150'>";
+
+											}
+										}
+										$("#thumbnails").html(html);
+								  }  	
+						});
+				  });
+		  	  } 
+		  );
+		  
+	function renderImage(fileName) {
+		$.ajax(
+			  	{
+			  	  type: "GET",
+				  url: "rest/pictures/fileName/" + fileName,
+				  dataType: "json",
+				  success: function(data) {
+						var fileInfo = data; // već je JSON zbog dataType gore...
+		
+						var html = "";
+						if(fileInfo.length==0) {
+							html = "Nema rezultata..."
+						} else {	
+							html+= fileInfo.fileName + "<br>";
+							html+= fileInfo.description + "<br>";
+							html+= fileInfo.tags + "<br><br>";
+
+							html += "<img class='fullSizeImage' src='servlets/getImage?fileName=" +fileName + "' alt='Full Size Image'>";
+							html += "<br>";
+						}
+						$("#fullSizeImage").html(html);
+				  }  	
+		});
+	}
+
+	function getTags() {
+		$.ajax(
+	  	{
+	  	  type: "GET",
+		  url: "rest/pictures",
+		  dataType: "json",
+		  success: function(data) {
+				var tags = data; // već je JSON zbog dataType gore...
+				var html = "";
+				if(tags.length==0) {
+					html = "Nema rezultata..."
+				} else {
+					for(var i=0; i<tags.length; i++) {
+						if (i%9==0) {
+							html+="<br>";
+						}
+						html += "<button class='tagButton' type='button' value=" + tags[i] + ">" + tags[i] + "</button>" + " ";						
+					}
+				}
+				$("#tagButtons").html(html);
+		  }
+	  });
+  }
+  
+	
+		  
+		//--></script>
+</head>
+<body>
+
+	<div id="tagButtons">&nbsp;</div>
+
+	<div id="thumbnails">&nbsp;</div>
+
+	<br>
+	<div id="fullSizeImage">&nbsp;</div>
+
+</body>
+</html>
