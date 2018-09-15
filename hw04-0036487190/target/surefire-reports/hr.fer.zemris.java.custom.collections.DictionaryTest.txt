@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: hr.fer.zemris.java.custom.collections.DictionaryTest
--------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.297 sec
