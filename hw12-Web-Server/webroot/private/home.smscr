@@ -1,0 +1,41 @@
+{$= "text/html" @setMimeType $}
+<!DOCTYPE html>
+<html>
+ <head>
+ <style>
+ body {background-color: #{$= "" "background" 0 @tparamGet $};}
+ </style>
+ </head>
+ <body>
+	<a href = "http://www.localhost.com:5721/scripts/osnovni.smscr">Osnovni.smscr</a><br>
+  	<a href = "http://www.localhost.com:5721/scripts/brojpoziva.smscr">Brojpoziva.smscr</a><br>
+ 	<a href = "http://www.localhost.com:5721/scripts/fibonaccihtml.smscr">FibonacciHTML.smscr</a><br><br><br>
+ 	
+ 	<a href = "http://www.localhost.com:5721/hello">HelloWorker</a><br>
+  	<a href = "http://www.localhost.com:5721/cw">CircleWorker</a><br><br><br>
+  	
+<form action="/calc" method="GET">
+ 	 parameter a:<br>
+ 	 <input type="text" name="a" >
+  	 <br>
+  	 parameter b:<br>
+  	 <input type="text" name="b" >
+     <br><br>
+     <input type="submit" value="Submit">
+</form> 
+  
+ <br><br><br> 
+  	
+ <form action="/setbgcolor">
+ 	 <select name=bgcolor>
+  		<option value="FF0000">Red</option>
+  		<option value="0e2f44">Blue</option>
+  		<option value="ffff00">Yellow</option>
+  		<option value="00fa9a">Green</option>
+	 </select>
+	      <input type="submit" value="Submit">
+ </form> 	
+  	
+ 	
+ </body>
+</html>
