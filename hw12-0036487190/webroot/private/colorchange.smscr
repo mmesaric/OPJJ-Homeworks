@@ -1,9 +1,0 @@
-{$= "text/html" @setMimeType $}
-<html>
-<head>
-<Title> Color change</title>
-</head>
- <body>
- 	<a href = "http://www.localhost.com:5721/index2.html">Index2.html</a><br>
-</body>
-</html>
