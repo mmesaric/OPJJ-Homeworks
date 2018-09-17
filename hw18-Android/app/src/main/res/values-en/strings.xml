@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">OPJJ1</string>
+    <string name="enter_numbers">Enter numbers:</string>
+    <string name="btn_calculate">Calculate</string>
+    <string name="unesite_djeljenika">Enter dividend</string>
+    <string name="unesite_djelitelja">Enter divisor</string>
+    <string name="enter_text">Input text</string>
+    <string name="send_result">Send</string>
+    <string name="send_to">Send to:</string>
+    <string name="email_title">Title:</string>
+    <string name="input_recipient">Enter recipient</string>
+    <string name="input_title">Enter subject</string>
+    <string name="email_message">Message:</string>
+    <string name="input_message">Enter message</string>
+    <string name="invalid_input">Incomplete input. Please, check all input fields</string>
+    <string name="invalid_email">Invalid email address.</string>
+    <string name="compose_email">Compose email</string>
+
+</resources>
